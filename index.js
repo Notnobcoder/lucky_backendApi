@@ -6,9 +6,16 @@ import bodyParser from 'body-parser';
 // TODO: dotenv config start
 import dotenv from "dotenv"
 dotenv.config()
+import cors from "cors"
 // TODO: dotenv config end
 
 const app = express();
+
+app.use(cors({
+  origin: 'https://luchy-project-1ljg.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+  credentials: true, // If you're sending cookies or auth headers
+}));
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
